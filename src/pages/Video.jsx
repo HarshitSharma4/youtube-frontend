@@ -16,7 +16,7 @@ function Video() {
   return (
     <div className="px-4 pb-4 pt-2 space-y-4">
       {video ? <ShowVideo {...video} /> : <Uploading />}
-      {video ? <Comments videoId={video._id} /> : <Uploading />}
+      {video ? <Comments videoId={videoId} /> : <Uploading />}
     </div>
   );
 }

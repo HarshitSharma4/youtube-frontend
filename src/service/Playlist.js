@@ -41,7 +41,7 @@ const addVideoToPlaylist = async ({ videoId, playlistId }) => {
     if (!playlistId || !videoId) {
       throw "playlistId and videoId is required";
     }
-    const playlist = await axios.patch(`/add/${videoId}/${playlistId}`);
+    const playlist = await axios.patch(`/api/v1/playlist/add/${videoId}/${playlistId}`);
     return playlist;
   } catch (error) {
     console.error(error);
@@ -52,7 +52,7 @@ const removeVideoToPlaylist = async ({ videoId, playlistId }) => {
     if (!playlistId || !videoId) {
       throw "playlistId and videoId is required";
     }
-    const playlist = await axios.patch(`/remove/${videoId}/${playlistId}`);
+    const playlist = await axios.patch(`/api/v1/playlist/remove/${videoId}/${playlistId}`);
     return playlist;
   } catch (error) {
     console.error(error);
@@ -60,12 +60,29 @@ const removeVideoToPlaylist = async ({ videoId, playlistId }) => {
 };
 const getUserPlaylists = async (userId) => {
   try {
-    const playlist = await axios.get(`/user/${userId}`);
+    const playlist = await axios.get(`/api/v1/playlist/user/${userId}`);
     return playlist;
   } catch (error) {
     console.error(error);
   }
 };
+const getplaylistById = async (playlistId)=>{
+  try {
+    const playlist = await axios.get(`/api/v1/playlist/${playlistId}`);
+    return playlist;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+const getPlaylistVideoStatus = async ({videoId})=>{
+  try {
+    const playlist = await axios.get(`/api/v1/playlist/video/${videoId}`);
+    return playlist;
+  } catch (error) {
+    console.error(error);
+  }   
+}
 export {
   createPlaylist,
   deletePlaylist,
@@ -73,4 +90,6 @@ export {
   addVideoToPlaylist,
   removeVideoToPlaylist,
   getUserPlaylists,
+  getPlaylistVideoStatus,
+  getplaylistById
 };

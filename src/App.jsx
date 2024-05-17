@@ -1,4 +1,4 @@
-import { HeroBar, Navigation } from "./components";
+import { HeroBar, Navigation, PlaylistVideos } from "./components";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,6 +37,7 @@ function App() {
               <Route path="/settings" element={<Setting />} />
               <Route path="/likevideos" element={<LikeVideos />} />
               <Route path="/video/:videoId" element={<Video />} />
+              <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
             </Routes>
           </div>
         </div>

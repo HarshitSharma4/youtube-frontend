@@ -1,12 +1,7 @@
-import React from "react";
 import { Playlist } from "../components";
 
 function Collection() {
-  return (
-    <div>
-      <Playlist />
-    </div>
-  );
+  return <Playlist />;
 }
 
 export default Collection;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getChannelVideos } from "../../service/video";
 import VideoCard from "../Card/VideoCard";
 import { Button, Empty } from "../index.js";
 
 import AddVideo from "../../pages/AddVideo.jsx";
+import { getChannelVideos } from "../../service/deshboard.js";
 function Videos({ channelId, isUserChannel, className }) {
   const [videos, setVideos] = useState([]);
   const [addvideo, setAddVideo] = useState(false);

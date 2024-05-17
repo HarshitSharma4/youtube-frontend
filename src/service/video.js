@@ -1,21 +1,14 @@
 import axios from "axios";
 
-const getAllVideos = async () => {
+const getAllVideos = async (quarys) => {
+  //{ page = 1, limit = 10, query, sortBy, sortType, userId }
   try {
-    const videos = await axios.get("/api/v1/videos");
+    const videos = await axios.get("/api/v1/videos", {
+      params: { ...quarys },
+    });
     return videos;
   } catch (error) {
     console.error("getAllVideos :: ", error);
-    throw error;
-  }
-};
-const getChannelVideos = async ({ channelId }) => {
-  try {
-    console.log(channelId);
-    const videos = await axios.get(`/api/v1/videos/c/${channelId}`);
-    return videos;
-  } catch (error) {
-    console.error("getChannelVideos :: ", error);
     throw error;
   }
 };
@@ -46,4 +39,4 @@ const getVideo = async (videoId) => {
     throw error;
   }
 };
-export { getAllVideos, getChannelVideos, publishVideo, getVideo };
+export { getAllVideos, publishVideo, getVideo };

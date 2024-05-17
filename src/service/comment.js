@@ -1,9 +1,7 @@
 import axios from "axios";
-const getVideoComment = async ({ videoId, content }) => {
+const getVideoComment = async ({ videoId }) => {
   try {
-    const comment = await axios.get(`/api/v1/comments/${videoId}`, {
-      content: content,
-    });
+    const comment = await axios.get(`/api/v1/comments/${videoId}`);
     return comment;
   } catch (error) {
     console.log("getComment ::", error);

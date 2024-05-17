@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Button } from "../index";
+import { Button, PlaylistModel } from "../index";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { toggleLikeVideo } from "../../service/like";
 import { toggleSubscription } from "../../service/subscription";
 import { MdOutlinePersonAdd, MdFolder } from "react-icons/md";
 import { Link } from "react-router-dom";
+import ReactPlayer from "react-player";
 function ShowVideo({
   _id,
   title,
@@ -17,10 +18,12 @@ function ShowVideo({
   isSubscribed,
   description,
 }) {
+  console.log(title)
   const [isLike, setIsLike] = useState(isLikeByUser);
   const [likeCount, setLikeCount] = useState(like);
   const [subcribe, setSubscribe] = useState(isSubscribed);
   const [isDiscription, setIsDiscription] = useState(false);
+  const [model,setModel] =useState(false);
   useEffect(() => {
     setIsLike(isLikeByUser);
     setLikeCount(like);
@@ -75,10 +78,11 @@ function ShowVideo({
   console.log(like, likeCount);
   console.log(isLike);
   return (
-    <div className=" space-y-4">
-      <video className="w-full h-[37rem]  mb-4" controls={true}>
-        <source src={videoFile} alt="video file" type="video/mp4" />
-      </video>
+    <div className="space-y-4">
+      <div className="w-[100%] mx-auto h-[calc(100vh-30vh)] mt-5 aspect-video rounded-xl bg-primary overflow-hidden relative">
+      <ReactPlayer width={"100%"} height={"100%"} url={videoFile} controls />
+      </div>
+
       <div className="text-lg font-semibold border-2 rounded-xl p-4">
         <div className="flex justify-between items-start gap-4 mb-7 mt-2">
           <div className="space-y-4 ">
@@ -112,7 +116,10 @@ function ShowVideo({
             </Button>
             <p className="text-xl p-1">{likeCount ? likeCount : "0"}</p>
           </div>
-          <Button className="px-4 py-1 rounded-sm bg-accent shadow-primary flex gap-4 items-center mr-5">
+          {model &&  <PlaylistModel setModel={setModel} videoId={_id} />}
+          <Button className="px-4 py-1 rounded-sm bg-accent shadow-primary flex gap-4 items-center mr-5"
+             onClick={()=>{setModel(true)}}
+          >
             <MdFolder />
             Save
           </Button>

@@ -23,6 +23,12 @@ import ShowVideo from "./ShowVideo/ShowVideo";
 import Comments from "./Comments/Comments";
 import CommentCard from "./Card/CommentCard";
 import CommentForm from "./Forms/CommentForm";
+import PlaylistModel from "./Playlist/PlaylistModel";
+import PlaylistCard from "./Card/PlaylistCard";
+import PlaylistVideos from "./Playlist/PlaylistVideos";
+import VideoCard2 from "./Card/VideoCard2";
+import PlaylistForm from "./Forms/PlaylistForm";
+import CheckBox from "./Input/CheckBox";
 export {
   HeroBar,
   Button,
@@ -49,4 +55,10 @@ export {
   Comments,
   CommentCard,
   CommentForm,
+  PlaylistCard,
+  PlaylistModel,
+  PlaylistVideos,
+  VideoCard2,
+  PlaylistForm,
+  CheckBox,
 };

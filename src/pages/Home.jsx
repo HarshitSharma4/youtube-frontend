@@ -6,7 +6,7 @@ function Home() {
   useEffect(() => {
     getAllVideos().then((res) => {
       console.log(res.data.data);
-      setVideos(res.data.data);
+      setVideos(res.data.data.docs);
     });
   }, []);
   return (

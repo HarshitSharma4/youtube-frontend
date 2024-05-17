@@ -4,7 +4,6 @@ import { CommentCard, CommentForm } from "../index";
 import { useSelector } from "react-redux";
 function Comments({ videoId }) {
   const [comments, setComments] = useState([]);
-  const [model, setModel] = useState(false);
   const userId = useSelector((state) => state.auth.userData._id);
   useEffect(() => {
     getVideoComment({ videoId }).then((res) => {

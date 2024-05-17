@@ -1,16 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getUserPlaylists } from "../../service/Playlist";
+import { useSelector } from "react-redux";
+import { PlaylistCard } from "../index";
 
 function Playlist() {
-  const [userPlaylist, setUserPlaylist] = useState([]);
-  const userId = "6606cea715ca1540def03d15";
+  const [playlists, setPlaylists] = useState([]);
+  const userId = useSelector((state) => state.auth.userData._id);
   useEffect(() => {
-    getUserPlaylists(userId).then((res) => {
-      if (res?.data?.data) console.log("empty");
-      console.log("playlist->", res);
-    });
-  }, []);
-  return <div></div>;
+   
+      getUserPlaylists(userId).then((res) => {
+        setPlaylists(res?.data?.data);
+        console.log(res);
+      });
+    
+  }, [userId]);
+  return (
+    <div className="grid grid-cols-3 gap-7 p-5">
+      {playlists.map((item, key) => (
+        <PlaylistCard key={key} {...item} />
+      ))}
+    </div>
+  );
 }
 
 export default Playlist;

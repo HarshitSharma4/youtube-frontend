@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
-const VideoCard =({
+const VideoCard2 = ({
   _id,
   thumbnail,
   title,
   duration,
   createdBy,
   views,
+  description,
   createdAt,
-}) =>{
+}) => {
+  console.log(_id);
   const differenceTime = (cteated) => {
     const createdDate = new Date(cteated);
     const currentDate = new Date();
@@ -46,8 +48,8 @@ const VideoCard =({
   console.log(time(duration));
   return (
     <Link to={`/video/${_id}`}>
-      <div className=" hover:bg-primary cursor-pointer p-1 shadow-sm shadow-text rounded-lg">
-        <div className="relative aspect-video ">
+      <div className=" hover:bg-primary cursor-pointer p-1 shadow-sm flex items-start justify-start gap-5 shadow-text rounded-lg">
+        <div className="relative aspect-video basis-[45%] shrink-0">
           <img
             src={thumbnail}
             alt="thumbnail"
@@ -59,37 +61,41 @@ const VideoCard =({
             {videoSecond > 9 ? `${videoSecond}` : `0${videoSecond}`}
           </h1>
         </div>
-        <div className="flex flex-row justify-start items-start gap-1 p-1 text-base">
-          <img
-            src={createdBy.avatar}
-            alt="avatar"
-            className="h-16 w-16 rounded-[100%] translate-y-3 shrink"
-          />
-          <div className="text-base *:text-start py-2 px-2 grow flex flex-col">
-            <h1 className="text-base font-bold line-clamp-2">{title}</h1>
-            <div className="flex justify-between ">
-              <h3>{views} view</h3>
-              <h3>
-                {years
-                  ? `${years} years`
-                  : months
-                  ? `${months} months`
-                  : days
-                  ? `${days} days`
-                  : hours
-                  ? `${hours} hours`
-                  : minutes
-                  ? `${minutes} minites`
-                  : seconds && `${seconds} seconds`}{" "}
-                ago
-              </h3>
+        <div className="flex flex-col justify-start items-start gap-4 p-1 text-base basis-2/3">
+          <h1 className="font-bold text-3xl line-clamp-1 text-start w-[80%]">{title}</h1>
+          <h2 className="text-lg font-medium line-clamp-1 text-start">{description}</h2>
+
+          <div className="flex">
+            <img
+              src={createdBy.avatar}
+              alt="avatar"
+              className="h-16 w-16 rounded-[100%]  shrink"
+            />
+            <div className="text-base *:text-start py-2 px-2 grow flex flex-col">
+              <div className="flex justify-between ">
+                <h3>{views} view</h3>
+                <h3>
+                  {years
+                    ? `${years} years`
+                    : months
+                    ? `${months} months`
+                    : days
+                    ? `${days} days`
+                    : hours
+                    ? `${hours} hours`
+                    : minutes
+                    ? `${minutes} minites`
+                    : seconds && `${seconds} seconds`}{" "}
+                  ago
+                </h3>
+              </div>
+              <h2>@{createdBy?.userName}</h2>
             </div>
-            <h2>@{createdBy?.userName}</h2>
           </div>
         </div>
       </div>
     </Link>
   );
-}
+};
 
-export default VideoCard;
+export default VideoCard2;
