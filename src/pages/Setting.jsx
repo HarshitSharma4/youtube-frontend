@@ -3,7 +3,6 @@ import { getCurrentUser } from "../service/user";
 import { useEffect, useState } from "react";
 import { Profile, TabBar } from "../components/index";
 import PersonalInfoForm from "../components/Forms/PersonalInfoForm";
-import ProfileInfoForm from "../components/Forms/ProfileInfoForm";
 import ChangePasswordForm from "../components/Forms/ChangePasswordForm";
 function Setting() {
   const userData = useSelector((state) => state.auth.userData);
@@ -35,7 +34,7 @@ function Setting() {
         setTab={setTab}
         options={["Dashboard", "Personal Infromation", "Change Password"]}
       />
-      {tab === "Dashboard" && <ProfileInfoForm />}
+      {tab === "Dashboard" && <h1>deshboard</h1>}
       {tab === "Personal Infromation" && (
         <PersonalInfoForm {...userDetails} setUserDetails={setUserDetails} />
       )}

@@ -148,7 +148,7 @@ function ShowVideo({
             }}
           >
             <MdOutlinePersonAdd />
-            {subcribe ? "Subscribed" : "subscribe"}
+            {subcribe ? "Subscribed" : "Unsubscribe"}
           </Button>
         </div>
         <p

@@ -19,7 +19,7 @@ function Navigation({ className = "" }) {
     {
       name: "History",
       icon: <GoHistory className="text-lg" />,
-      url: "/watchlater",
+      url: "/history",
     },
     {
       name: "My Content",

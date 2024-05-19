@@ -50,32 +50,16 @@ function UserProfile() {
         options={["Videos", "Playlist", "Tweets", "Subscribed"]}
       />
       {tab == "Videos" && (
-        <Videos
-          channelId={userDetails._id}
-          isUserChannel={isUserChannel}
-          className={"h-[calc(100vh-11.6rem)] "}
-        />
+        <Videos channelId={userDetails._id} isUserChannel={isUserChannel} />
       )}
       {tab == "Playlist" && (
-        <Playlist
-          channelId={userDetails._id}
-          isUserChannel={isUserChannel}
-          className={"h-[calc(100vh-11.6rem)] "}
-        />
+        <Playlist channelId={userDetails._id} isUserChannel={isUserChannel} />
       )}
       {tab == "Tweets" && (
-        <Tweets
-          channelId={userDetails._id}
-          isUserChannel={isUserChannel}
-          className={"h-[calc(100vh-11.6rem)] "}
-        />
+        <Tweets channelId={userDetails._id} isUserChannel={isUserChannel} />
       )}
       {tab == "Subscribed" && (
-        <Subscribed
-          channelId={userDetails._id}
-          isUserChannel={isUserChannel}
-          className={"h-[calc(100vh-11.6rem)] "}
-        />
+        <Subscribed channelId={userDetails._id} isUserChannel={isUserChannel} />
       )}
     </>
   );

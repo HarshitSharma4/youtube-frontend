@@ -3,20 +3,20 @@ import VideoCard from "../Card/VideoCard";
 import { Button, Empty } from "../index.js";
 
 import AddVideo from "../../pages/AddVideo.jsx";
-import { getChannelVideos } from "../../service/deshboard.js";
-function Videos({ channelId, isUserChannel, className }) {
+import { getAllVideos } from "../../service/video.js";
+function Videos({ channelId, isUserChannel }) {
   const [videos, setVideos] = useState([]);
   const [addvideo, setAddVideo] = useState(false);
   console.log("user Channel", isUserChannel);
   useEffect(() => {
-    getChannelVideos({ channelId }).then((res) => {
+    getAllVideos({userId:channelId}).then((res) => {
       console.log(res.data.data);
-      setVideos(res.data.data);
+      setVideos(res.data.data.docs);
     });
   }, [channelId]);
   if (!videos.length)
     return (
-      <div className={`w-full relative ${className}`}>
+      <div className={`w-full h-full relative  min-h-[calc(100vh-11.6rem)]`}>
         {isUserChannel && (
           <Button
             className="bg-accent shadow-primary text-lg px-2 py-2 absolute top-1 right-4"
@@ -36,7 +36,7 @@ function Videos({ channelId, isUserChannel, className }) {
       </div>
     );
   return (
-    <div className="w-full relative mt-7 h-[calc(100vh-9.8rem)] overflow-y-auto">
+    <div className="w-full relative mt-7 min-h-[calc(100vh-11.6rem)] overflow-y-auto">
       {isUserChannel && (
         <Button
           className="bg-accent shadow-primary text-lg px-2 py-2 absolute top-1 right-4"
