@@ -17,7 +17,7 @@ function SubscribeCard({ subscribed, isUserChannel, subscribers }) {
   };
   return (
     <Link to={`/channel/${subscribed?.userName || subscribers?.userName}`}>
-      <div className="flex items-center m-5  px-10 py-5 gap-5 border-2 rounded-xl cursor-pointer hover:-translate-y-1">
+      <div className="flex items-center m-5  px-10 py-5 gap-5 border-2 rounded-xl cursor-pointer hover:-translate-y-1 hover:bg-primary">
         <img
           src={subscribed?.avatar || subscribers?.avatar}
           alt="avatar"
@@ -49,7 +49,7 @@ function SubscribeCard({ subscribed, isUserChannel, subscribers }) {
             toggleSub();
           }}
         >
-          {isSubscribe ? "Subscribed" : "Subscribe"}
+          {isSubscribe ? "UnSubscribe":"Subscribed" }
         </Button>
       </div>
     </Link>
