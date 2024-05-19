@@ -9,8 +9,9 @@ const PlaylistForm = ({
   className = "",
   name,
   discription,
-  playlistId,
+  _id,
   setModel,
+  setPlaylist,
 }) => {
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -22,8 +23,9 @@ const PlaylistForm = ({
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState("");
   const registerComment = async (data) => {
+    setError(false)
     try {
-      if (!name || !playlistId) {
+      if (!name || !_id) {
         console.log(data);
         setUploading(true);
         setWaiting(true);
@@ -41,22 +43,27 @@ const PlaylistForm = ({
         setWaiting(true);
         console.log(data);
         const Playlist = await updatePlaylist({
-          playlistId: playlistId,
-          name: name,
-          discription: discription,
+          playlistId: _id,
+          name: data?.name,
+          discription: data?.discription,
         });
+        console.log(Playlist)
         if (Playlist) {
           //Todo:set Playlist in state
+          if(setPlaylist){
+            setPlaylist((prev)=>{return {...prev,name:name,discription: discription}});
+          }
           setWaiting(false);
         }
         reset();
       }
     } catch (error) {
       setWaiting(false);
-      setError(error?.message);
+      setError(true);
     }
   };
-  return (
+  return (<div className="fixed top-0 bottom-0 left-0 right-0 grid place-items-center z-50 bg-gradient-to-b from-[rgba(70,69,69,0.4)] to-[rgba(41,68,216,0.34)]">
+
     <div
       className={`w-[65%] p-10 my-4 border-2 pt-2 bg-background shadow-lg shadow-secondary md:rounded-lg  flex flex-col items-center justify-center relative ${className} ${
         setModel && "pt-5"
@@ -71,7 +78,7 @@ const PlaylistForm = ({
         />
       )}
       <h1 className="text-3xl my-7">
-        {!name || !playlistId ? "Created" : "Updated"} Playlist
+        {!name || !_id ? "Created" : "Updated"} Playlist
       </h1>
       {!uploading && !waiting && (
         <form
@@ -100,7 +107,7 @@ const PlaylistForm = ({
             type="submit"
             className="text-base -translate-y-4 px-11 py-3 mt-5 font-medium bg-accent shadow-primary"
           >
-            {!name || !playlistId ? "Create" : "Update"} Playlist
+            {!name || !_id ? "Create" : "Update"} Playlist
           </Button>
         </form>
       )}
@@ -115,7 +122,7 @@ const PlaylistForm = ({
           <div className="w-full h-full flex flex-col justify-center items-center space-y-7">
             <h1 className="text-error text-xl">
               Error Playlist does not{" "}
-              {!name || !playlistId ? "Created" : "Updated"}: {error}
+              {!name || !_id ? "Created" : "Updated"}: {error}
             </h1>
             <Button
               className="bg-error text-lg shadow-primary px-5 py-2 !mb-4"
@@ -134,7 +141,7 @@ const PlaylistForm = ({
               <img src={correct} alt="SuccessFull" className="h-16 w-16" />
               <h1 className="text-2xl">
                 Playlist Successfully{" "}
-                {!name || !playlistId ? "Created" : "Updated"}
+                {!name || !_id ? "Created" : "Updated"}
               </h1>
               <Button
                 className="text-lg px-5 py-2 bg-success shadow-primary !mb-4"
@@ -150,6 +157,7 @@ const PlaylistForm = ({
           </>
         ))}
     </div>
+  </div>
   );
 };
 
