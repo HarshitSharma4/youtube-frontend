@@ -20,6 +20,7 @@ const deletePlaylist = async (playlistId) => {
     return playlist;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 const updatePlaylist = async ({ playlistId, name, discription }) => {
@@ -34,6 +35,7 @@ const updatePlaylist = async ({ playlistId, name, discription }) => {
     return playlist;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 const addVideoToPlaylist = async ({ videoId, playlistId }) => {
@@ -45,6 +47,7 @@ const addVideoToPlaylist = async ({ videoId, playlistId }) => {
     return playlist;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 const removeVideoToPlaylist = async ({ videoId, playlistId }) => {
@@ -56,6 +59,7 @@ const removeVideoToPlaylist = async ({ videoId, playlistId }) => {
     return playlist;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 const getUserPlaylists = async (userId) => {

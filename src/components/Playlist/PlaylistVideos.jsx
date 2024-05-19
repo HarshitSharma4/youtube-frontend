@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getplaylistById } from "../../service/Playlist";
-import { VideoCard2 } from "../index";
+import { useNavigate, useParams } from "react-router-dom";
+import { deletePlaylist, getplaylistById } from "../../service/Playlist";
+import { PlaylistForm, VideoCard2 } from "../index";
 import { FaPencil } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 const PlaylistVideos = () => {
   const { playlistId } = useParams();
-  const [playlist, setPlaylist] = useState({});
+  const [playlist, setPlaylist] = useState();
+  const [model, setModel] = useState(false);
   useEffect(() => {
     getplaylistById(playlistId).then((res) => {
       console.log("playlist by id->", res);
@@ -38,6 +41,35 @@ const PlaylistVideos = () => {
   const { years, months, days, hours, minutes, seconds } = differenceTime(
     playlist?.createdAt
   );
+  const notify = (message, type) => {
+    toast[type](message, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+  const navigate = useNavigate();
+  const playlistDetete = () => {
+    deletePlaylist(playlist?._id)
+      .then(() => {
+        notify("Playlist deleted success", "success");
+        navigate("/");
+      })
+      .catch(() => {
+        notify("Playlist delete failed", "error");
+      });
+  };
+  const userId = useSelector((state) => state.auth.userData._id)
+  const isOwner =( () =>{
+    if(playlist)
+     return playlist.owner.toString() === userId.toString() ? true:false;
+    return false;
+  })();
   return (
     <div className="flex items-start gap-7 p-7 h-full">
       <div className="bg-primary h-full basis-[30%] p-5 shrink-0 rounded-2xl">
@@ -57,14 +89,25 @@ const PlaylistVideos = () => {
         <div className="text-2xl py-4">
           <div className="flex justify-between items-center">
             <h1 className="w-[65%] text-start">{playlist?.name}</h1>
-            <div className="flex gap-4 text-xl">
-              <button className="px-3 py-2 rounded-lg text-accent bg-text hover:text-text hover:bg-accent">
-              <FaPencil />
+            {isOwner && <div className="flex gap-4 text-xl">
+              <button
+                className="px-3 py-2 rounded-lg text-accent bg-text hover:text-text hover:bg-accent"
+                onClick={() => {
+                  setModel(true);
+                }}
+              >
+                <FaPencil />
               </button>
-              <button className="px-3 py-2 rounded-lg text-error bg-text hover:text-text hover:bg-error ">
-              <FaTrash />
+              {model && <PlaylistForm {...playlist} setModel={setModel} />}
+              <button
+                className="px-3 py-2 rounded-lg text-error bg-text hover:text-text hover:bg-error "
+                onClick={() => {
+                  playlistDetete();
+                }}
+              >
+                <FaTrash />
               </button>
-            </div>
+            </div>}
           </div>
           <div className="flex items-start gap-4 justify-between text-xl mt-5">
             <h2 className="text-start  max-w-[65%]">{playlist?.discription}</h2>
@@ -87,13 +130,23 @@ const PlaylistVideos = () => {
               </span>
             </p>
           </div>
-          <h2 className="text-lg text-start mt-4">{playlist?.creator?.fullName}</h2>
-          <h2 className="text-lg text-start ">@{playlist?.creator?.userName}</h2>
+          <h2 className="text-lg text-start mt-4">
+            {playlist?.creator?.fullName}
+          </h2>
+          <h2 className="text-lg text-start ">
+            @{playlist?.creator?.userName}
+          </h2>
         </div>
       </div>
       <div className="overflow-y-scroll flex flex-col gap-5">
         {playlist?.playlistVideos?.map((item, key) => (
-          <VideoCard2 key={key} {...item} />
+          <VideoCard2
+            key={key}
+            {...item}
+            playlistId={playlist?._id}
+            isPlaylistVideo={true}
+            setPlaylist={setPlaylist}
+          />
         ))}
       </div>
     </div>

@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import { getUserPlaylists } from "../../service/Playlist";
-import { useSelector } from "react-redux";
 import { PlaylistCard } from "../index";
 
-function Playlist() {
+function Playlist({channelId}) {
   const [playlists, setPlaylists] = useState([]);
-  const userId = useSelector((state) => state.auth.userData._id);
+  
   useEffect(() => {
    
-      getUserPlaylists(userId).then((res) => {
+      getUserPlaylists(channelId).then((res) => {
         setPlaylists(res?.data?.data);
         console.log(res);
       });
     
-  }, [userId]);
+  }, [channelId]);
   return (
-    <div className="grid grid-cols-3 gap-7 p-5">
+    <div className="grid grid-cols-3 gap-7 px-5 py-7 min-h-[calc(100vh-12rem)]">
       {playlists.map((item, key) => (
         <PlaylistCard key={key} {...item} />
       ))}
