@@ -29,6 +29,7 @@ import PlaylistVideos from "./Playlist/PlaylistVideos";
 import VideoCard2 from "./Card/VideoCard2";
 import PlaylistForm from "./Forms/PlaylistForm";
 import CheckBox from "./Input/CheckBox";
+import Stats from "./Deshboard/Stats";
 export {
   HeroBar,
   Button,
@@ -61,4 +62,5 @@ export {
   VideoCard2,
   PlaylistForm,
   CheckBox,
+  Stats,
 };
