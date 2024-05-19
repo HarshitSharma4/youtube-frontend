@@ -10,9 +10,11 @@ import {
   Signup,
   Subscribers,
   UserProfile,
-  Watchlater,
+  History,
   Setting,
   Video,
+  SearchText,
+  Support,
 } from "./pages/index.js";
 import LikeVideos from "./pages/LikeVideos.jsx";
 
@@ -30,14 +32,16 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/channel/:userName" element={<UserProfile />} />
-              <Route path="/watchlater" element={<Watchlater />} />
+              <Route path="/history" element={<History />} />
               <Route path="/my-content" element={<MyContent />} />
               <Route path="/collections" element={<Collection />} />
               <Route path="/subscribers" element={<Subscribers />} />
               <Route path="/settings" element={<Setting />} />
               <Route path="/likevideos" element={<LikeVideos />} />
+              <Route path="/support" element={<Support />} />
               <Route path="/video/:videoId" element={<Video />} />
               <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
+              <Route path="/search/:searchText" element={<SearchText />} />
             </Routes>
           </div>
         </div>
