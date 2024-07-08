@@ -12,8 +12,8 @@ function History() {
   }, []);
   return (
     <div className="grid grid-cols-4 gap-4 p-4 ">
-    {HistoryVideos.map((item, index) => (
-      <VideoCard key={index} {...item} createdBy={item.owner} />
+    {HistoryVideos.map((item) => (
+      <VideoCard key={item._id} {...item} createdBy={item.owner} />
     ))}
   </div>
   )

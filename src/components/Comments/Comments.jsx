@@ -18,9 +18,9 @@ function Comments({ videoId }) {
     <div className="p-5 border-2 rounded-xl text-lg text-start">
       <h1 className="pb-2 px-4 border-b-2">Comments</h1>
       <CommentForm setComments={setComments} videoId={videoId} />
-      {comments.map((item, key) => (
+      {comments.map((item) => (
         <CommentCard
-          key={key}
+          key={item._id}
           {...item}
           comments={comments}
           setComments={setComments}

@@ -8,7 +8,7 @@ import { createPlaylist, updatePlaylist } from "../../service/Playlist";
 const PlaylistForm = ({
   className = "",
   name,
-  discription,
+  description,
   _id,
   setModel,
   setPlaylist,
@@ -16,7 +16,7 @@ const PlaylistForm = ({
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       name: name || "",
-      discription: discription || "",
+      description: description || "",
     },
   });
   const [uploading, setUploading] = useState(false);
@@ -45,13 +45,13 @@ const PlaylistForm = ({
         const Playlist = await updatePlaylist({
           playlistId: _id,
           name: data?.name,
-          discription: data?.discription,
+          description: data?.description,
         });
         console.log(Playlist)
         if (Playlist) {
           //Todo:set Playlist in state
           if(setPlaylist){
-            setPlaylist((prev)=>{return {...prev,name:name,discription: discription}});
+            setPlaylist((prev)=>{return {...prev,name:name,description: description}});
           }
           setWaiting(false);
         }
@@ -95,11 +95,11 @@ const PlaylistForm = ({
             })}
           />
           <Input
-            label="Discription :-"
-            placeholder="Write  Playlist discription . . ."
+            label="description :-"
+            placeholder="Write  Playlist description . . ."
             type="text"
             divClass="-translate-y-1 "
-            {...register("discription", {
+            {...register("description", {
               required: true,
             })}
           />

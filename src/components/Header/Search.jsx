@@ -5,8 +5,9 @@ function Search({ className = "" }) {
   const navigate = useNavigate();
   const searchText = (e)=>{
     if (e.key === 'Enter' && e.target.value.trim() !== '') {
-      console.log("searc h",e.target.value);
-      navigate(`/search/${e.target.value}`);
+      let text = e.target.value;
+      e.target.value = ""
+      navigate(`/search/${text}`);
     }
     console.log(e.target.value + e.key);
   }

@@ -12,8 +12,8 @@ function LikeVideos() {
   }, []);
   return (
     <div className="grid grid-cols-4 gap-4 p-4 ">
-      {likeVideo.map((item, index) => (
-        <VideoCard key={index} {...item.likeVideos} />
+      {likeVideo.map((item) => (
+        <VideoCard key={item._id} {...item.likeVideos} />
       ))}
     </div>
   );

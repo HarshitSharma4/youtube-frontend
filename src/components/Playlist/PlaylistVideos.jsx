@@ -110,7 +110,7 @@ const PlaylistVideos = () => {
             </div>}
           </div>
           <div className="flex items-start gap-4 justify-between text-xl mt-5">
-            <h2 className="text-start  max-w-[65%]">{playlist?.discription}</h2>
+            <h2 className="text-start  max-w-[65%]">{playlist?.description}</h2>
             <p className="text-lg flex items-center justify-between gap-1">
               <div className="h-2 w-2 overflow-hidden rounded-[100%] bg-text text-xs ">
                 .
@@ -139,9 +139,9 @@ const PlaylistVideos = () => {
         </div>
       </div>
       <div className="overflow-y-scroll flex flex-col gap-5">
-        {playlist?.playlistVideos?.map((item, key) => (
+        {playlist?.playlistVideos?.map((item) => (
           <VideoCard2
-            key={key}
+            key={item._id}
             {...item}
             playlistId={playlist?._id}
             isPlaylistVideo={true}

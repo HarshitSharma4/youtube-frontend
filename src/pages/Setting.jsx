@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "../service/user";
 import { useEffect, useState } from "react";
-import { Profile, TabBar } from "../components/index";
+import { Profile, TabBar,Deshboard } from "../components/index";
 import PersonalInfoForm from "../components/Forms/PersonalInfoForm";
 import ChangePasswordForm from "../components/Forms/ChangePasswordForm";
 function Setting() {
@@ -34,7 +34,7 @@ function Setting() {
         setTab={setTab}
         options={["Dashboard", "Personal Infromation", "Change Password"]}
       />
-      {tab === "Dashboard" && <h1>deshboard</h1>}
+      {tab === "Dashboard" && <Deshboard />}
       {tab === "Personal Infromation" && (
         <PersonalInfoForm {...userDetails} setUserDetails={setUserDetails} />
       )}

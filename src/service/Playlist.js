@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const createPlaylist = async ({ name, discription }) => {
+const createPlaylist = async ({ name, description }) => {
   try {
     const playlist = await axios.post("/api/v1/playlist", {
       name,
-      discription,
+      description,
     });
     return playlist;
   } catch (error) {
@@ -23,14 +23,14 @@ const deletePlaylist = async (playlistId) => {
     throw error;
   }
 };
-const updatePlaylist = async ({ playlistId, name, discription }) => {
+const updatePlaylist = async ({ playlistId, name, description }) => {
   try {
     if (!playlistId) {
       throw "playlistId is required";
     }
     const playlist = await axios.patch(`/api/v1/playlist/${playlistId}`, {
       name,
-      discription,
+      description,
     });
     return playlist;
   } catch (error) {

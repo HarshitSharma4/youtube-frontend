@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const PlaylistCard = ({_id,name,owner,discription,playlistVideos,createdAt}) => {
+const PlaylistCard = ({_id,name,owner,description,playlistVideos,createdAt}) => {
   const differenceTime = (cteated) => {
     const createdDate = new Date(cteated);
     const currentDate = new Date();
@@ -39,7 +39,7 @@ const PlaylistCard = ({_id,name,owner,discription,playlistVideos,createdAt}) => 
           <p className="text-lg text-start">{playlistVideos?.length} video</p>
         </div>
         <div className='flex items-center gap-4 justify-start text-xl'>
-          <h2 className="text-start line-clamp-1 max-w-[65%]">{discription}</h2>
+          <h2 className="text-start line-clamp-1 max-w-[65%]">{description}</h2>
           <p className='text-lg flex items-center gap-1'><div className='h-2 w-2 overflow-hidden rounded-[100%] bg-text text-xs '>.</div>
           <span>
             {years

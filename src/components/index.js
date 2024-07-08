@@ -30,6 +30,10 @@ import VideoCard2 from "./Card/VideoCard2";
 import PlaylistForm from "./Forms/PlaylistForm";
 import CheckBox from "./Input/CheckBox";
 import Stats from "./Deshboard/Stats";
+import Deshboard from "./Deshboard/Deshboard";
+import DeshboardVideos from "./Deshboard/DeshboardVideos";
+import PublishToggle from "./Deshboard/PublishToggle";
+import VideoSetting from "./Deshboard/VideoSetting";
 export {
   HeroBar,
   Button,
@@ -63,4 +67,8 @@ export {
   PlaylistForm,
   CheckBox,
   Stats,
+  Deshboard,
+  DeshboardVideos,
+  PublishToggle,
+  VideoSetting,
 };

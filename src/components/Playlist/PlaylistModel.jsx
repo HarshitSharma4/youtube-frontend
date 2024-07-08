@@ -18,13 +18,13 @@ const PlaylistModel = ({ videoId, setModel }) => {
   }, [videoId, addPlaylist]);
   if (addPlaylist) {
     return (
-      <div className="fixed top-0 bottom-0 left-0 right-0 grid place-items-center">
+      <div className="fixed top-0 bottom-0 left-0 right-0 z-50 grid place-items-center">
         <PlaylistForm setModel={setAddPlaylist} />
       </div>
     );
   }
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 grid place-items-center">
+    <div className="fixed top-0 bottom-0 left-0 right-0 z-50 grid place-items-center">
       <div className="rounded-xl border-2 w-80  bg-background text-text">
         <div className="flex justify-between item-center p-5 border-b-2">
           <h1 className="text-xl font-bold">Save Video to Playlist ...</h1>
@@ -36,8 +36,8 @@ const PlaylistModel = ({ videoId, setModel }) => {
           />
         </div>
         <div className="overflow-y-scroll h-72 space-y-4 mt-4">
-          {playlistStatus.map((item, key) => (
-            <CheckBox key={key} {...item} videoId={videoId} />
+          {playlistStatus.map((item) => (
+            <CheckBox key={item._id} {...item} videoId={videoId} />
           ))}
         </div>
         <div

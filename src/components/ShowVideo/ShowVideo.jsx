@@ -22,7 +22,7 @@ function ShowVideo({
   const [isLike, setIsLike] = useState(isLikeByUser);
   const [likeCount, setLikeCount] = useState(like);
   const [subcribe, setSubscribe] = useState(isSubscribed);
-  const [isDiscription, setIsDiscription] = useState(false);
+  const [isDescription, setIsDescription] = useState(false);
   const [model,setModel] =useState(false);
   useEffect(() => {
     setIsLike(isLikeByUser);
@@ -153,10 +153,10 @@ function ShowVideo({
         </div>
         <p
           className={`my-5 text-start cursor-pointer ${
-            isDiscription ? "" : "line-clamp-2"
+            isDescription ? "" : "line-clamp-2"
           }`}
           onClick={() => {
-            setIsDiscription(!isDiscription);
+            setIsDescription(!isDescription);
           }}
         >
           {description}

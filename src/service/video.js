@@ -39,4 +39,38 @@ const getVideo = async (videoId) => {
     throw error;
   }
 };
-export { getAllVideos, publishVideo, getVideo };
+const updateThumbnail = async ({ videoId, thumbnail }) => {
+  try {
+    const video = await axios.patch(`/api/v1/videos/${videoId}`, { thumbnail });
+    return video;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+const deleteVideo = async (videoId) => {
+  try {
+    const video = await axios.delete(`/api/v1/videos/${videoId}`);
+    return video;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+const videoTogglePublish = async (videoId) => {
+  try {
+    const video = await axios.patch(`/api/v1/videos/toggle/publish/${videoId}`);
+    return video;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+export {
+  getAllVideos,
+  publishVideo,
+  getVideo,
+  updateThumbnail,
+  deleteVideo,
+  videoTogglePublish,
+};

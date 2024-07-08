@@ -19,8 +19,8 @@ function Subscribers() {
   }, [userData]);
   return (
     <div>
-      {subscriber.map((item, index) => (
-        <SubscribeCard key={index} {...item} />
+      {subscriber.map((item) => (
+        <SubscribeCard key={item._id} {...item} />
       ))}
     </div>
   );

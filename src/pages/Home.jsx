@@ -11,8 +11,8 @@ function Home() {
   }, []);
   return (
     <div className="grid grid-cols-4 gap-4 p-4 ">
-      {videos.map((item, index) => (
-        <VideoCard key={index} {...item} />
+      {videos.map((item) => (
+        <VideoCard key={item._id} {...item} />
       ))}
     </div>
   );

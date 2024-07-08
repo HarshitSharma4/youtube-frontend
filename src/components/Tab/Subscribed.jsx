@@ -17,8 +17,8 @@ function Subscribed({ channelId, isUserChannel, className }) {
   }, []);
   return (
     <div className={`w-full min-h-[calc(100vh-11.6rem)] relative mt-7 overflow-y-auto ${className}`}>
-      {subscribed.map((item, index) => (
-        <SubscribeCard {...item} key={index} isUserChannel={isUserChannel} />
+      {subscribed.map((item) => (
+        <SubscribeCard {...item} key={item._id} isUserChannel={isUserChannel} />
       ))}
     </div>
   );

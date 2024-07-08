@@ -15,8 +15,8 @@ function Playlist({channelId}) {
   }, [channelId]);
   return (
     <div className="grid grid-cols-3 gap-7 px-5 py-7 min-h-[calc(100vh-12rem)]">
-      {playlists.map((item, key) => (
-        <PlaylistCard key={key} {...item} />
+      {playlists.map((item) => (
+        <PlaylistCard key={item._id} {...item} />
       ))}
     </div>
   );

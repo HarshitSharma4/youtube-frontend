@@ -49,9 +49,9 @@ function Tweets({ channelId, isUserChannel }) {
         </div>
       )}
       <div className="w-full space-y-7 p-5">
-        {tweets.map((item, index) => (
+        {tweets.map((item) => (
           <TweetCard
-            key={index}
+            key={item._id}
             {...item}
             isUserChannel={isUserChannel}
             setTweets={setTweets}
