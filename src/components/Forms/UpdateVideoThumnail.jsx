@@ -6,24 +6,34 @@ import { HiMiniXMark } from "react-icons/hi2";
 import correct from "../../assets/correct.svg";
 import { createPlaylist, updatePlaylist } from "../../service/Playlist";
 import { updateThumbnail } from "../../service/video";
-const UpdateVideo = ({
+import { toast } from "react-toastify";
+const UpdateVideoThumbnail = ({
   className = "",
   thumbnail,
   _id,
   setModel,
   setVideoList,
 }) => {
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: {
-      title: title || "",
-      description: description || "",
-    },
-  });
+  const { register, handleSubmit, reset } = useForm();
   const [uploading, setUploading] = useState(false);
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState("");
+  const notify = (message, type) => {
+    toast[type](message, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
   const registerComment = async (data) => {
     setError(false);
+
     try {
       if (!thumbnail || !_id) {
         console.log(data);
@@ -33,13 +43,14 @@ const UpdateVideo = ({
         const video = await updateThumbnail({ ...data, videoId: _id });
         if (video) {
           console.log(video);
-
+          notify(" Thumbnail updated success", "success");
           setWaiting(false);
         }
         reset();
       }
     } catch (error) {
       setWaiting(false);
+      notify(" Thumbnail updated Failed", "error");
       setError(true);
     }
   };
@@ -66,7 +77,7 @@ const UpdateVideo = ({
             onSubmit={handleSubmit(registerComment)}
             className="w-[85%] mx-auto px-10 py-5 flex gap-10 items-center justify-center flex-col"
           >
-            <img src={thumbnail} alt="thumbnail" />
+            <img className="aspect-video  w-[50%]" src={thumbnail} alt="thumbnail" />
             <Input
               label="Thumbnail : "
               placeholder="Enter your Name"
@@ -136,4 +147,4 @@ const UpdateVideo = ({
   );
 };
 
-export default UpdateVideo;
+export default UpdateVideoThumbnail;

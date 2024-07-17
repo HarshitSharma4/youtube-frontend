@@ -34,6 +34,10 @@ import Deshboard from "./Deshboard/Deshboard";
 import DeshboardVideos from "./Deshboard/DeshboardVideos";
 import PublishToggle from "./Deshboard/PublishToggle";
 import VideoSetting from "./Deshboard/VideoSetting";
+import UpdateVideoThumbnail from "./Forms/UpdateVideoThumnail";
+import Authentication from "./Authentication/Authentication";
+import PersonalInfoForm from "./Forms/PersonalInfoForm";
+import ChangePasswordForm from "./Forms/ChangePasswordForm";
 export {
   HeroBar,
   Button,
@@ -71,4 +75,8 @@ export {
   DeshboardVideos,
   PublishToggle,
   VideoSetting,
+  UpdateVideoThumbnail,
+  Authentication,
+  PersonalInfoForm,
+  ChangePasswordForm,
 };

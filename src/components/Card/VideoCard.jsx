@@ -66,7 +66,7 @@ const VideoCard =({
             className="h-16 w-16 rounded-[100%] translate-y-3 shrink"
           />
           <div className="text-base *:text-start py-2 px-2 grow flex flex-col">
-            <h1 className="text-base font-bold line-clamp-2">{title}</h1>
+            <h1 className="text-base font-bold line-clamp-1">{title}</h1>
             <div className="flex justify-between ">
               <h3>{views} view</h3>
               <h3>

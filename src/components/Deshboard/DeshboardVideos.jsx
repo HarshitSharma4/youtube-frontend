@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getChannelVideos } from "../../service/deshboard";
 import { PublishToggle, VideoSetting } from "../index";
+import { Link } from "react-router-dom";
 const DeshboardVideos = () => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
@@ -33,7 +34,7 @@ const DeshboardVideos = () => {
                     src={item.thumbnail}
                     alt="Code Master"
                   />
-                  <h3 className="font-semibold">{item.title}</h3>
+                  <Link to={`/video/${item._id}`} className="font-semibold">{item.title}</Link>
                 </div>
               </td>
               <td className="border-collapse border-b border-gray-600 px-4 py-3 group-last:border-none">
@@ -50,7 +51,7 @@ const DeshboardVideos = () => {
                 {item?.createdAt.slice(9, 10)}/{item?.createdAt.slice(6, 7)}/
                 {item?.createdAt.slice(0, 4)}
               </td>
-              <VideoSetting _id={item._id} />
+              <VideoSetting _id={item._id} thumbnail={item.thumbnail} setVideos={setVideos} />
             </tr>
           ))}
         </tbody>

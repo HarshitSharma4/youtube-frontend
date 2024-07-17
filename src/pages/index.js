@@ -11,6 +11,7 @@ import Error from "./Error";
 import History from "./History";
 import SearchText from "./SearchText";
 import Support from "./Support";
+import Logout from "./Logout";
 export {
   Login,
   Home,
@@ -24,5 +25,6 @@ export {
   Error,
   History,
   SearchText,
-  Support
+  Support,
+  Logout,
 };

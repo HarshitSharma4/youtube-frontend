@@ -1,8 +1,13 @@
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "../service/user";
 import { useEffect, useState } from "react";
-import { Profile, TabBar,Deshboard } from "../components/index";
-import PersonalInfoForm from "../components/Forms/PersonalInfoForm";
+import {
+  Profile,
+  TabBar,
+  Deshboard,
+  PersonalInfoForm,
+} from "../components/index";
+import {Logout} from "./index"
 import ChangePasswordForm from "../components/Forms/ChangePasswordForm";
 function Setting() {
   const userData = useSelector((state) => state.auth.userData);
@@ -35,8 +40,10 @@ function Setting() {
         options={["Dashboard", "Personal Infromation", "Change Password"]}
       />
       {tab === "Dashboard" && <Deshboard />}
-      {tab === "Personal Infromation" && (
+      {tab === "Personal Infromation" && (<div className="h-[calc(100vh-9.8rem)] overflow-y-auto" >
         <PersonalInfoForm {...userDetails} setUserDetails={setUserDetails} />
+        <Logout />
+        </div>
       )}
       {tab === "Change Password" && <ChangePasswordForm />}
     </>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { deleteVideo } from "../../service/video";
-
-const VideoSetting = ({ _id, setVideos }) => {
+import { UpdateVideoThumbnail } from "../index";
+const VideoSetting = ({ _id, setVideos,thumbnail }) => {
+  const [model, setModel] = useState(false);
   const notify = (message, type) => {
     toast[type](message, {
       position: "bottom-right",
@@ -28,11 +29,16 @@ const VideoSetting = ({ _id, setVideos }) => {
       notify("Failed to delete video", "error");
     }
   };
-  // const update = async () =>{}
   return (
-    <td className="border-collapse border-b border-gray-600 px-4 py-3 group-last:border-none">
+    <td className="border-collapse border-b border-gray-600 px-4 py-3 group-last:border-none"> 
+      {model && <UpdateVideoThumbnail thumbnail={thumbnail} _id={_id} setModel={setModel} setVideoList={setVideos} />}
       <div className="flex gap-4">
-        <button className="h-5 w-5 hover:text-[#ae7aff]" onClick={()=>{deleteVideo()}}>
+        <button
+          className="h-5 w-5 hover:text-[#ae7aff]"
+          onClick={() => {
+            videoDelete();
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -48,7 +54,7 @@ const VideoSetting = ({ _id, setVideos }) => {
             ></path>
           </svg>
         </button>
-        <button className="h-5 w-5 hover:text-[#ae7aff]">
+        <button className="h-5 w-5 hover:text-[#ae7aff]" onClick={()=>{setModel(true)}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

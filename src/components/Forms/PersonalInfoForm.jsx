@@ -43,7 +43,7 @@ function PersonalInfoForm({ fullName, email, userName, setUserDetails }) {
   };
 
   return (
-    <div className="text-xl font-bold flex w-full h-[calc(100vh-9.8rem)] overflow-y-auto p-7 ">
+    <div className="text-xl font-bold flex w-full  p-7 ">
       <div className="grow">
         <h1 className="text-2xl text-start">Personal Info</h1>
         <p className="text-lg py-4 text-start ">
