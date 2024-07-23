@@ -11,7 +11,7 @@ function History() {
     });
   }, []);
   return (
-    <div className="grid grid-cols-4 gap-4 p-4 ">
+    <div className="flex flex-wrap justify-center  items-start md:justify-start gap-4 p-4 ">
     {HistoryVideos.map((item) => (
       <VideoCard key={item._id} {...item} createdBy={item.owner} />
     ))}

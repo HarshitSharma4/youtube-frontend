@@ -18,9 +18,11 @@ const toggleLikeVideo = async (videoId) => {
     throw error;
   }
 };
-const toggleLikeComment = async (commentId) => {
+const toggleLikeComment = async (commentId, quarys) => {
   try {
-    const like = await axios.post(`/api/v1/likes/toggle/c/${commentId}`);
+    const like = await axios.post(`/api/v1/likes/toggle/c/${commentId}`, {
+      params: { ...quarys },
+    });
     return like;
   } catch (error) {
     console.log(error);

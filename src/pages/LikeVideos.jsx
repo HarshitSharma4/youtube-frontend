@@ -7,11 +7,11 @@ function LikeVideos() {
   useEffect(() => {
     getLikeVideos().then((res) => {
       console.log(res);
-      setLikeVideo(res.data.data);
+      setLikeVideo(res.data.data.docs);
     });
   }, []);
   return (
-    <div className="grid grid-cols-4 gap-4 p-4 ">
+    <div className="flex flex-wrap justify-center  items-start md:justify-start gap-4 p-4 ">
       {likeVideo.map((item) => (
         <VideoCard key={item._id} {...item.likeVideos} />
       ))}

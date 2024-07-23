@@ -46,26 +46,26 @@ function Navigation({ className = "" }) {
           <Link
             key={index}
             to={item.url}
-            className="border-2  px-4 py-2 flex gap-2 items-center justify-start w-full hover:bg-accent"
+            className="border-2 p-1 md:px-4 md:py-2 flex gap-2 items-center justify-start w-full hover:bg-accent"
           >
             {item.icon}
-            <ul>{item.name}</ul>
+            <ul className="hidden md:block">{item.name}</ul>
           </Link>
         ))}
       </nav>
       <div className="space-y-4 w-[95%]">
         <Link
           to="/support"
-          className="border-2  px-4 py-2 w-full flex gap-2 items-center  justify-evenly hover:bg-accent"
+          className="border-2  p-1 md:px-4 md:py-2 w-full flex gap-2 items-center  justify-evenly hover:bg-accent"
         >
           <MdOutlineContactSupport className="block text-lg" />{" "}
-          <span>Support</span>
+          <span className="hidden md:block">Support</span>
         </Link>
         <Link
           to="/settings"
-          className="border-2  px-4 py-2 w-full flex gap-2 items-center justify-evenly hover:bg-accent"
+          className="border-2  p-1 md:px-4 md:py-2 w-full flex gap-2 items-center justify-evenly hover:bg-accent"
         >
-          <IoSettingsOutline className="block text-lg" /> <span>Settings</span>
+          <IoSettingsOutline className="block text-lg" /> <span className="hidden md:block">Settings</span>
         </Link>
       </div>
     </div>

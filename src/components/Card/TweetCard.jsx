@@ -102,7 +102,7 @@ function TweetCard({
       <img
         src={userDetail.avatar}
         alt="user avatar"
-        className="h-16 w-16 border-2 rounded-[100%] overflow-hidden object-cover"
+        className="hidden md:block  h-16 w-16 border-2 rounded-[100%] overflow-hidden object-cover"
       />
       <div className="text-start pl-5 ">
         <div className="flex gap-7">

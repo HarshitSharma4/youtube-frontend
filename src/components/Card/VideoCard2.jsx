@@ -114,8 +114,8 @@ const VideoCard2 = ({
             </div>
           </div>
         )}
-        <div className="  hover:bg-primary cursor-pointer p-1 shadow-sm flex items-start justify-start gap-5 shadow-text rounded-lg border-2">
-          <div className="relative  aspect-video basis-[35%] shrink-0 border-r-2 pr-2">
+        <div className="hover:bg-primary cursor-pointer p-1 shadow-sm flex items-start justify-start flex-wrap md:flex-nowrap gap-5 shadow-text rounded-lg border-2">
+          <div className="relative w-full md:basis-[35%] shrink-0 md:border-r-2 pr-2">
             <img
               src={thumbnail}
               alt="thumbnail"

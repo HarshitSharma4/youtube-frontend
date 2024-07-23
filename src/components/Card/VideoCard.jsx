@@ -21,7 +21,6 @@ const VideoCard =({
     const days = Math.floor(hours / 24);
     const months = Math.floor(days / 30);
     const years = Math.floor(days / 365);
-
     return {
       years,
       months,
@@ -31,6 +30,13 @@ const VideoCard =({
       seconds: seconds % 60,
     };
   };
+  if(!thumbnail ||
+    !title ||
+    !duration ||
+    !createdBy ||
+    !views ||
+    !createdAt)
+    return <div></div>
   const time = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
@@ -46,7 +52,7 @@ const VideoCard =({
   console.log(time(duration));
   return (
     <Link to={`/video/${_id}`}>
-      <div className=" hover:bg-primary cursor-pointer p-1 shadow-sm shadow-text rounded-lg">
+      <div className=" w-72 h-72 hover:bg-primary cursor-pointer p-1 shadow-sm shadow-text rounded-lg">
         <div className="relative aspect-video ">
           <img
             src={thumbnail}
@@ -61,7 +67,7 @@ const VideoCard =({
         </div>
         <div className="flex flex-row justify-start items-start gap-1 p-1 text-base">
           <img
-            src={createdBy.avatar}
+            src={createdBy?.avatar}
             alt="avatar"
             className="h-16 w-16 rounded-[100%] translate-y-3 shrink"
           />

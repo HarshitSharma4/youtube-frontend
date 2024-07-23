@@ -19,7 +19,7 @@ function Videos({ channelId, isUserChannel }) {
       <div className={`w-full h-full relative  min-h-[calc(100vh-11.6rem)]`}>
         {isUserChannel && (
           <Button
-            className="bg-accent shadow-primary text-lg px-2 py-2 absolute top-1 right-4"
+            className="bg-accent shadow-primary text-lg px-2 py-2 absolute z-50 top-1 right-4"
             onClick={() => {
               setAddVideo(true);
             }}
@@ -39,7 +39,7 @@ function Videos({ channelId, isUserChannel }) {
     <div className="w-full relative mt-7 min-h-[calc(100vh-11.6rem)] overflow-y-auto">
       {isUserChannel && (
         <Button
-          className="bg-accent shadow-primary text-lg px-2 py-2 absolute top-1 right-4"
+          className="bg-accent shadow-primary text-lg px-2 py-2 absolute z-50 top-1 right-4"
           onClick={() => {
             setAddVideo(true);
           }}

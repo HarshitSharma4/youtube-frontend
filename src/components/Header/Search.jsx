@@ -13,7 +13,7 @@ function Search({ className = "" }) {
   }
   return (
     <div
-      className={`border-text border-2 flex items-center justify-center w-96  px-4 gap-4 ${className}`}
+      className={`border-text border-2 flex items-center justify-center w-[65%] md:w-96  px-4 gap-4 ${className}`}
     >
       <FaSearch className="text-base" />
       <Input

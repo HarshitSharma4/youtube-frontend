@@ -29,7 +29,7 @@ function App() {
       <div className=" h-screen w-screen flex bg-background border-text overflow-hidden text-text flex-col">
         <HeroBar />
         <div className="flex grow h-[calc(100vh-4.75rem)]">
-          <Navigation className="w-56 shrink-0 h-[calc(100vh-4.75rem)]" />
+          <Navigation className="md:w-56 w-16 shrink-0 h-[calc(100vh-4.75rem)]" />
           <div className="text-center  h-[calc(100vh-5rem)] text-5xl grow overflow-y-scroll">
             <ToastContainer className={"bg-secondary text-lg rounded-md"} />
             <Routes>
