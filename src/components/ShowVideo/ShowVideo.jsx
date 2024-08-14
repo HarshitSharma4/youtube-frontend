@@ -79,12 +79,12 @@ function ShowVideo({
   console.log(isLike);
   return (
     <div className="space-y-4">
-      <div className="w-[100%] mx-auto h-[calc(100vh-30vh)] mt-5 aspect-video rounded-xl bg-primary overflow-hidden relative">
+      <div className="w-[100%] mx-auto h-96 md:h-[calc(100vh-30vh)] mt-5 aspect-video rounded-xl bg-primary overflow-hidden relative">
       <ReactPlayer width={"100%"} height={"100%"} url={videoFile} controls />
       </div>
 
       <div className="text-lg font-semibold border-2 rounded-xl p-4">
-        <div className="flex justify-between items-start gap-4 mb-7 mt-2">
+        <div className="flex justify-between items-start gap-4 mb-7 mt-2 flex-wrap">
           <div className="space-y-4 ">
             <h1 className="text-2xl font-bold">{title}</h1>
             <div className="flex gap-4">
@@ -124,7 +124,7 @@ function ShowVideo({
             Save
           </Button>
         </div>
-        <div className="flex justify-between pb-4 border-b-2">
+        <div className="flex justify-between flex-wrap gap-4 pb-4 border-b-2">
           <Link
             to={`/channel/${createdBy?.userName}`}
             className="flex gap-4 items-center"

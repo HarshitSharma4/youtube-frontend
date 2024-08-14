@@ -71,8 +71,8 @@ const PlaylistVideos = () => {
     return false;
   })();
   return (
-    <div className="flex items-start gap-7 p-7 h-full">
-      <div className="bg-primary h-full basis-[30%] p-5 shrink-0 rounded-2xl">
+    <div className="flex flex-col md:flex-row items-start gap-7 p-7 h-full">
+      <div className="bg-primary md:h-full basis-[30%] p-5 shrink-0 rounded-2xl">
         <div className="w-full aspect-video relative">
           <img
             src={
@@ -138,7 +138,7 @@ const PlaylistVideos = () => {
           </h2>
         </div>
       </div>
-      <div className="overflow-y-scroll flex flex-col gap-5">
+      <div className="md:overflow-y-scroll grid grid-cols-1 gap-5">
         {playlist?.playlistVideos?.map((item) => (
           <VideoCard2
             key={item._id}

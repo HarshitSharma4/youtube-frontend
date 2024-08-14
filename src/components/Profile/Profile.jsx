@@ -35,7 +35,7 @@ function Profile({
           className="object-cover h-full w-full"
         />
       </div>
-      <div className="flex grow px-7 py-4 justify-between items-start">
+      <div className="flex grow px-7 py-4 justify-between flex-wrap gap-4 items-start">
         <div className="flex gap-7 justify-start px-2 items-start h-28">
           <div className="h-36 w-36  -translate-y-12 rounded-[100%] overflow-hidden">
             <img

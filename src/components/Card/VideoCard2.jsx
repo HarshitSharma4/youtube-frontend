@@ -87,7 +87,7 @@ const VideoCard2 = ({
   const { videoHoure, videoMinute, videoSecond } = time(duration);
   console.log(time(duration));
   return (
-    <div className="relative  max-h-48">
+    <div className="relative  min-h-48">
       {model && <PlaylistModel setModel={setModel} videoId={_id} />}
       <Link to={`/video/${_id}`}>
         <button

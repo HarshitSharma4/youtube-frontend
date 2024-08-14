@@ -73,7 +73,7 @@ function CommentForm({
       {!uploading && !waiting && (
         <form
           onSubmit={handleSubmit(registerComment)}
-          className="w-full px-8 py-5 flex gap-4 items-center"
+          className="w-full px-8 py-5 flex gap-4 flex-wrap items-center"
         >
           <Input
             placeholder="Write your Comment . . ."

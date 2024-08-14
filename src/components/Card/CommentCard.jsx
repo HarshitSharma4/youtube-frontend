@@ -104,7 +104,7 @@ function CommentCard({
       <img
         src={userDetail.avatar}
         alt="user avatar"
-        className="h-16 w-16 border-2 rounded-[100%] overflow-hidden object-cover"
+        className="h-16 w-16 hidden md:block border-2 rounded-[100%] overflow-hidden object-cover"
       />
       <div className="text-start pl-5 ">
         <div className="flex gap-7">
