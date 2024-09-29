@@ -1,40 +1,75 @@
 import axios from "axios";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const getVideoComment = async ({ videoId }) => {
   try {
-    const comment = await axios.get(`/api/v1/comments/${videoId}`);
+    const accessToken = localStorage.getItem("accessToken");
+
+    const comment = await axios.get(`${baseUrl}/api/v1/comments/${videoId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     return comment;
   } catch (error) {
-    console.log("getComment ::", error);
+    console.log("getVideoComment ::", error);
     throw error;
   }
 };
+
 const createComment = async ({ videoId, content }) => {
   try {
-    console.log(videoId, content);
-    const comment = await axios.post(`/api/v1/comments/${videoId}`, {
-      content: content,
-    });
+    const accessToken = localStorage.getItem("accessToken");
+
+    const comment = await axios.post(
+      `${baseUrl}/api/v1/comments/${videoId}`,
+      { content },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return comment;
   } catch (error) {
     console.log("createComment ::", error);
     throw error;
   }
 };
-const updateComment = async ({ commentId }) => {
+
+const updateComment = async ({ commentId, content }) => {
   try {
-    const comment = await axios.patch(`/api/v1/comments/c/${commentId}`);
+    const accessToken = localStorage.getItem("accessToken");
+
+    const comment = await axios.patch(
+      `${baseUrl}/api/v1/comments/c/${commentId}`,
+      { content },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return comment;
   } catch (error) {
-    console.log("updateComment::", error);
+    console.log("updateComment ::", error);
     throw error;
   }
 };
+
 const deleteComment = async ({ commentId }) => {
   try {
-    const comment = await axios.delete(`/api/v1/comments/c/${commentId}`);
+    const accessToken = localStorage.getItem("accessToken");
+
+    const comment = await axios.delete(`${baseUrl}/api/v1/comments/c/${commentId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     return comment;
   } catch (error) {
-    console.log("deleteComment::", error);
+    console.log("deleteComment ::", error);
+    throw error;
   }
 };
 

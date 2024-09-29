@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { Logo, Input, Button } from "../index";
+import { Logo, Input, Button, Loading } from "../index";
 import { useState } from "react";
 import { login } from "../../service/user";
 import { useDispatch } from "react-redux";
@@ -13,11 +13,13 @@ function LoginForm({ className = "" }) {
     reset,
   } = useForm();
   const [error, setError] = useState("");
+  const [isLoading ,setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginUser = async (data) => {
     setError("");
     try {
+      setIsLoading(true);
       console.log(data);
       const loginDetails = await login({ ...data });
       if (loginDetails?.data?.data?.user)
@@ -25,11 +27,14 @@ function LoginForm({ className = "" }) {
       reset();
       navigate("/");
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
       setError(error.message);
     }
   };
-
+  if(isLoading){
+    return <Loading />;
+  }
   return (
     <div
       className={`w-[60%] border-2  bg-background shadow-lg shadow-secondary md:rounded-lg px-7 py-11 flex items-center flex-col ${className}`}

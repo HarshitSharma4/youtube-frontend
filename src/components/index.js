@@ -38,6 +38,7 @@ import UpdateVideoThumbnail from "./Forms/UpdateVideoThumnail";
 import Authentication from "./Authentication/Authentication";
 import PersonalInfoForm from "./Forms/PersonalInfoForm";
 import ChangePasswordForm from "./Forms/ChangePasswordForm";
+import Loading from "./Loading/Uploading";
 export {
   HeroBar,
   Button,
@@ -79,4 +80,5 @@ export {
   Authentication,
   PersonalInfoForm,
   ChangePasswordForm,
+  Loading,
 };

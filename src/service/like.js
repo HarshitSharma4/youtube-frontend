@@ -1,41 +1,81 @@
 import axios from "axios";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const toggleLikeTweet = async (tweetId) => {
   try {
-    const like = await axios.post(`/api/v1/likes/toggle/t/${tweetId}`);
+    const accessToken = localStorage.getItem("accessToken");
+
+    const like = await axios.post(
+      `${baseUrl}/api/v1/likes/toggle/t/${tweetId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return like;
   } catch (error) {
-    console.log(error);
+    console.error("toggleLikeTweet ::", error);
     throw error;
   }
 };
+
 const toggleLikeVideo = async (videoId) => {
   try {
-    const like = await axios.post(`/api/v1/likes/toggle/v/${videoId}`);
+    const accessToken = localStorage.getItem("accessToken");
+
+    const like = await axios.post(
+      `${baseUrl}/api/v1/likes/toggle/v/${videoId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     return like;
   } catch (error) {
-    console.log(error);
+    console.error("toggleLikeVideo ::", error);
     throw error;
   }
 };
+
 const toggleLikeComment = async (commentId, quarys) => {
   try {
-    const like = await axios.post(`/api/v1/likes/toggle/c/${commentId}`, {
-      params: { ...quarys },
+    const accessToken = localStorage.getItem("accessToken");
+
+    const like = await axios.post(
+      `${baseUrl}/api/v1/likes/toggle/c/${commentId}`,
+      {},
+      {
+        params: { ...quarys },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    return like;
+  } catch (error) {
+    console.error("toggleLikeComment ::", error);
+    throw error;
+  }
+};
+
+const getLikeVideos = async () => {
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+
+    const like = await axios.get(`${baseUrl}/api/v1/likes/videos`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
     return like;
   } catch (error) {
-    console.log(error);
+    console.error("getLikeVideos ::", error);
     throw error;
   }
 };
-const getLikeVideos = async () => {
-  try {
-    const like = await axios.get(`/api/v1/likes/videos`);
-    return like;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
+
 export { toggleLikeTweet, toggleLikeVideo, toggleLikeComment, getLikeVideos };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, Logo } from "../index";
+import { Button, Input, Loading, Logo } from "../index";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginAuth } from "../../store/authSlice";
@@ -13,12 +13,14 @@ function SignupForm({ className = "" }) {
     reset,
   } = useForm();
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigator = useNavigate();
   const registerForm = async (data) => {
     setError("");
     try {
       console.log(data);
+      setIsLoading(true);
       const signup = await registerUser({
         ...data,
         avatar: data.avatar[0],
@@ -29,9 +31,13 @@ function SignupForm({ className = "" }) {
       reset();
       navigator("/");
     } catch (error) {
+      setIsLoading(false);
       setError(error?.message);
     }
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div
       className={`w-[65%] border-2  bg-background shadow-lg shadow-secondary md:rounded-lg px-7 py-4 flex items-center flex-col ${className}`}

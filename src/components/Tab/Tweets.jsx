@@ -10,7 +10,7 @@ function Tweets({ channelId, isUserChannel }) {
       if (res) setTweets(res.data.data);
     });
   }, [channelId]);
-  if (!Tweets.length)
+  if (!tweets?.length)
     return (
       <div className="w-full h-full relative">
         {isUserChannel && (
