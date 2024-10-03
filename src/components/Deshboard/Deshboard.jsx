@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { getChannelStats } from "../../service/deshboard";
-import { DeshboardVideos, Stats } from "../index";
+import { getChannelStats, getChannelVideos } from "../../service/deshboard";
+import { DeshboardVideos, Loading, Stats } from "../index";
 const Deshboard = () => {
   const [stats, setStats] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     getChannelStats().then((res) => {
       console.log(res);
@@ -13,8 +15,16 @@ const Deshboard = () => {
         { name: "Total Likes", total: res.data.data.totalLikes },
       ];
       setStats(userStats);
+      getChannelVideos().then((res) => {
+        console.log("videos,", res.data.data);
+        setVideos(res.data.data.docs);
+      });
+      setIsLoading(false);
     });
   },[]);
+ 
+  if (isLoading) return <Loading />;
+ 
 
   return (<div className="px-5 py-7">
     <div className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-4 *:cursor-pointer">
@@ -22,7 +32,7 @@ const Deshboard = () => {
         <Stats key={item.name} {...item} />
       ))}
     </div>
-    <DeshboardVideos />
+   {videos?.length && <DeshboardVideos videos={videos} setVideos={setVideos} />}
   </div>
   );
 };

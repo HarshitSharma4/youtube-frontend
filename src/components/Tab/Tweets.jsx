@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
-import { Button, Empty, TweetCard, TweetForm } from "../index.js";
+import { Button, Empty, Loading, TweetCard, TweetForm } from "../index.js";
 import { getChannelTweets } from "../../service/tweets.js";
 function Tweets({ channelId, isUserChannel }) {
   const [tweets, setTweets] = useState([]);
   const [addTweets, setAddTweets] = useState(false);
+  const [isLoading,setIsLoading] = useState(true)
   console.log("user Channel", isUserChannel);
   useEffect(() => {
     getChannelTweets({ channelId }).then((res) => {
       if (res) setTweets(res.data.data);
-    });
+      console.log(res);
+      setIsLoading(false);
+    }).catch(()=>{setIsLoading(false)});
   }, [channelId]);
+  if(isLoading){
+    return <Loading />
+  }
   if (!tweets?.length)
     return (
       <div className="w-full h-full relative">

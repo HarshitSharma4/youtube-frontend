@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getChannnelSubcriber } from "../service/subscription";
 import { useSelector } from "react-redux";
-import { SubscribeCard } from "../components";
+import { Loading, SubscribeCard } from "../components";
 function Subscribers() {
   const [subscriber, setSubscriber] = useState([]);
   const userData = useSelector((state) => state.auth.userData);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (userData) {
@@ -14,9 +15,11 @@ function Subscribers() {
           console.log(res);
           setSubscriber(res.data.data);
         }
-      });
+        setIsLoading(false)
+      }).catch(()=>{setIsLoading(false)});
     }
   }, [userData]);
+  if (isLoading) return <Loading />;
   return (
     <div>
       {subscriber.map((item) => (

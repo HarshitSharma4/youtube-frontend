@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Loading from "../Loading/Uploading";
 
-const Authentication = ({ authentication = true, children }) =>{
+const Authentication = ({ authentication = true, children }) => {
   const [loading, setLoading] = useState(true);
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
@@ -16,11 +17,7 @@ const Authentication = ({ authentication = true, children }) =>{
     setLoading(false);
   }, [authStatus, authentication, navigate]);
 
-  return loading ? (
-    <div className="w-screen h-screen text-xl"> Loading ...</div>
-  ) : (
-    <>{children}</>
-  );
-}
+  return loading ? <Loading /> : <>{children}</>;
+};
 
 export default Authentication;

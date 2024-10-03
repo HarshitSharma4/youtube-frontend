@@ -1,11 +1,13 @@
 import axios from "axios";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const createTweet = async ({ content }) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
     const tweet = await axios.post(
-      "/api/v1/tweets/",
+      `${baseUrl}/api/v1/tweets/`,
       { content },
       {
         headers: {
@@ -24,7 +26,7 @@ const getChannelTweets = async ({ channelId }) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
-    const tweets = await axios.get(`/api/v1/tweets/c/${channelId}`, {
+    const tweets = await axios.get(`${baseUrl}/api/v1/tweets/c/${channelId}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -41,7 +43,7 @@ const updateTweet = async ({ tweetId, content }) => {
     const accessToken = localStorage.getItem("accessToken");
 
     const tweet = await axios.patch(
-      `/api/v1/tweets/${tweetId}`,
+      `${baseUrl}/api/v1/tweets/${tweetId}`,
       { content },
       {
         headers: {
@@ -60,7 +62,7 @@ const deleteTweet = async ({ tweetId }) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
-    const tweet = await axios.delete(`/api/v1/tweets/${tweetId}`, {
+    const tweet = await axios.delete(`${baseUrl}/api/v1/tweets/${tweetId}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

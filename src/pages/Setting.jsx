@@ -6,10 +6,13 @@ import {
   TabBar,
   Deshboard,
   PersonalInfoForm,
+  Loading,
 } from "../components/index";
 import {Logout} from "./index"
 import ChangePasswordForm from "../components/Forms/ChangePasswordForm";
 function Setting() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const userData = useSelector((state) => state.auth.userData);
   const [userDetails, setUserDetails] = useState([]);
   const [tab, setTab] = useState("Dashboard");
@@ -21,12 +24,15 @@ function Setting() {
           setUserDetails(responce.data.data);
 
           console.log("user Channel", isUserChannel);
+          setIsLoading(false)
         })
         .catch((error) => {
           console.log(error);
+          setIsLoading(false);
         });
     }
   }, [userData]);
+  if (isLoading) return <Loading />;
   return (
     <>
       <Profile

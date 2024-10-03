@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import VideoCard from "../Card/VideoCard";
-import { Button, Empty } from "../index.js";
+import { Button, Empty, Loading } from "../index.js";
 
 import AddVideo from "../../pages/AddVideo.jsx";
 import { getAllVideos } from "../../service/video.js";
 function Videos({ channelId, isUserChannel }) {
   const [videos, setVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [addvideo, setAddVideo] = useState(false);
   console.log("user Channel", isUserChannel);
   useEffect(() => {
-    getAllVideos({userId:channelId}).then((res) => {
+    getAllVideos({ userId: channelId }).then((res) => {
       console.log(res.data.data);
       setVideos(res.data.data.docs);
-    });
+      setIsLoading(false);
+    }).catch(()=>{setIsLoading(false)});
   }, [channelId]);
+  if (isLoading) return <Loading />;
   if (!videos.length)
     return (
       <div className={`w-full h-full relative  min-h-[calc(100vh-11.6rem)]`}>

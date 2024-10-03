@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getChannelVideos } from "../../service/deshboard";
+
 import { PublishToggle, VideoSetting } from "../index";
 import { Link } from "react-router-dom";
-const DeshboardVideos = () => {
-  const [videos, setVideos] = useState([]);
-  useEffect(() => {
-    getChannelVideos().then((res) => {
-      console.log("videos,", res.data.data);
-      setVideos(res.data.data.docs);
-    });
-  }, []);
+const DeshboardVideos = ({videos,setVideos}) => {
+  console.log("videos",videos);
   return (
-    <div className="rounded-xl border-2 my-9">
+    <div className="rounded-xl border-2 my-9 overflow-x-scroll">
       <table className="w-full min-w-[1200px] border-collapse text-xl text-white   cursor-pointer">
         <thead>
           <tr>
@@ -24,7 +17,7 @@ const DeshboardVideos = () => {
           </tr>
         </thead>
         <tbody>
-          {videos.map((item) => (
+          {videos?.map((item) => (
             <tr className="group border text-lg" key={item._id}>
               <PublishToggle {...item} />
               <td className="border-collapse border-b  px-4 py-3 group-last:border-none">

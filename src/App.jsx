@@ -2,11 +2,10 @@ import React, { Suspense, lazy } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Authentication, HeroBar, Navigation } from "./components";
+import { Authentication, HeroBar, Navigation, PlaylistVideos } from "./components";
 import Loading from "./components/Loading/Loading.jsx";
 
 // Lazy load your pages
-const PlaylistVideos = lazy(() => import("./components"))
 const Collection = lazy(() => import("./pages/Collection"));
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -131,7 +130,7 @@ function App() {
                 <Route
                   path="/playlist/:playlistId"
                   element={
-                    <Authentication>
+                    <Authentication authentication={true}>
                       <PlaylistVideos />
                     </Authentication>
                   }

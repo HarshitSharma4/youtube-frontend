@@ -27,7 +27,7 @@ const PlaylistCard = ({_id,name,owner,description,playlistVideos,createdAt}) => 
   const { years, months, days, hours, minutes, seconds } =
   differenceTime(createdAt);
   return (
-   <Link className="h-56 w-96 relative aspect-video rounded-xl overflow-hidden hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] shadow-secondary" to={`/playlist/${_id}`}>
+   <Link className="h-56 w-96 relative aspect-video rounded-xl transition-all overflow-hidden hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.5)] shadow-secondary border-secondary border-2" to={`/playlist/${_id}`}>
       <div className="w-full h-full">
         <img src={playlistVideos?.length > 0 ? playlistVideos[0].thumbnail:"https://images.unsplash.com/photo-1571292098320-997aa03a5d19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGxhaW4lMjBiYWNrZ3JvdW5kc3xlbnwwfHwwfHx8MA%3D%3D"} 
           className="h-full w-full object-cover"
